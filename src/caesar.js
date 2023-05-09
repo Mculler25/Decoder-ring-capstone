@@ -38,6 +38,7 @@ const caesarModule = (function () {
       "y",
       "z",
     ];
+    const special = "/. \|`~!@#$%^&*(),?<>;:[]{}-_=+"
     // make the input all lowercase
     const input1 = input.toLowerCase();
     // make an array to put new message in
@@ -46,10 +47,10 @@ const caesarModule = (function () {
     const userInput = input1.split("");
     if (encode === true) {
       //loop through userinput
-      userInput.forEach((el) => {
+      userInput.forEach((inputEl) => {
         // if element is a letter
-        if (el != " " && el != ".") {
-          let index = result.indexOf(el);
+        if (!special.includes(inputEl)) {
+          let index = result.indexOf(inputEl);
           index = (index + shift) % result.length;
           // if index is negative got to the end of the array
           if (index < 0) {
@@ -61,29 +62,29 @@ const caesarModule = (function () {
             codedMessage.push(result[index]);
           }
         }
-        // if element is a space or period then just push into array
-        else if (el === " ") {
-          codedMessage.push(" ");
-        } else {
-          codedMessage.push(".");
+        // if element isn't a letter just push it into array
+        else {
+          codedMessage.push(inputEl);
         }
       });
     } else {
       //map each letter to its encoded letter
-      userInput.forEach((el) => {
-        if (el != " " && el != ".") {
-          let index = result.indexOf(el);
+      userInput.forEach((inputEl) => {
+        if (!special.includes(inputEl)) {
+          let index = result.indexOf(inputEl);
           index = (index - shift) % result.length;
+          //if the index is left a remainder that is then
+          //less than zero loop back around
           if (index < 0) {
             index += result.length;
             codedMessage.push(result[index]);
           } else {
             codedMessage.push(result[index]);
           }
-        } else if (el === " ") {
-          codedMessage.push(" ");
-        } else {
-          codedMessage.push(".");
+        }  
+        // if element isn't a letter just push it into array
+        else {
+          codedMessage.push(inputEl);
         }
       });
     }
