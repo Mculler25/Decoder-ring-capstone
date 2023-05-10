@@ -12,7 +12,7 @@ const substitutionModule = (function () {
     // find out if there are repeating characters. if there are return false
     if (!alphabet || alphabet.length != 26) return false;
 
-    const isThereRepeatingChar = result.filter((el) => {
+    const isThereRepeatingChar = alphabet.filter((el) => {
       return alphabet.indexOf(el) !== alphabet.lastIndexOf(el);
     });
     if (isThereRepeatingChar.length > 0) return false;
