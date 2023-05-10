@@ -8,7 +8,7 @@ const caesarModule = (function () {
 
   function caesar(input = "", shift = 0, encode = true) {
     // return false if shift doesn't meet certain requirements
-    if (shift === 0 || shift > 25 || shift < -25) return false;
+    if (shift === 0 || shift > 25 || shift < -25 || shift === false ) return false;
     //make array with alphebet
     const result = [
       "a",
@@ -38,6 +38,7 @@ const caesarModule = (function () {
       "y",
       "z",
     ];
+    //string to use to check if there are special characters
     const special = "/. \|`~!@#$%^&*(),?<>;:[]{}-_=+"
     // make the input all lowercase
     const input1 = input.toLowerCase();

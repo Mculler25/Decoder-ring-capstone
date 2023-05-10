@@ -7,8 +7,8 @@ const polybiusModule = (function () {
   // you can add any code you want within this function scope
 
   function polybius(input = "", encode = true) {
-    // your solution code here
-    if(!input) return false;
+    // if there is no input given return false
+    if(!input || input === false) return false;
     const cypherValues = [
       { a: 11 },
       { b: 21 },
@@ -44,6 +44,7 @@ const polybiusModule = (function () {
     //make input an array
     //see if encode is true
     if (encode === true) {
+      //make userinput an array that we can loop through
       const userInput = input1.split("");
       userInput.forEach((el) => {
         if (el === " ") {
@@ -59,15 +60,16 @@ const polybiusModule = (function () {
         });
       });
     } else {
+      //counting the numbers given
       let counter = 0;
       for (let i = 0; i < input.length; i++) {
         if (input[i] != " ") {
           counter += 1;
         }
       }
-
+      //if numbers given is odd then return false
       if (counter % 2 != 0) return false;
-
+      //get number value while ignoring spaces
       userInput = [];
       for (let i = 0; i < input.length; i++) {
         let char = input.charAt(i);
@@ -82,16 +84,20 @@ const polybiusModule = (function () {
           userInput.push(num);
         }
       }
-
+      //eliminate j becuase 42 will come back as "(i/j)"
       cypherValues.splice(9, 1);
+      //loop through userinput
       userInput.forEach((el) => {
         if (el === " ") {
           codedMessage.push(" ");
         }
+        //loop through cypherValues
         cypherValues.forEach((el2, idx) => {
-          const keys = Object.values(el2);
-
-          keys.forEach((el3) => {
+          //get the values from cypherValues
+          const values = Object.values(el2);
+          //loop through the values
+          values.forEach((el3) => {
+            //if element matches element from the userinput array push into an array
             if (el === el3) {
               if (el === 42) {
                 codedMessage.push("(i/j)");
@@ -103,6 +109,7 @@ const polybiusModule = (function () {
         });
       });
     }
+    //return encoded or decoded string
     return codedMessage.join("");
   }
   return {

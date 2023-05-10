@@ -7,16 +7,17 @@ const substitutionModule = (function () {
   // you can add any code you want within this function scope
 
   function substitution(input = "", alphabet = "", encode = true) {
-    // your solution code here
+    // put the alphabet into an array
+    alphabet = alphabet.split("");
+    // find out if there are repeating characters. if there are return false
     if (!alphabet || alphabet.length != 26) return false;
-    const result = alphabet.split("");
+
     const isThereRepeatingChar = result.filter((el) => {
-      return result.indexOf(el) !== result.lastIndexOf(el);
+      return alphabet.indexOf(el) !== alphabet.lastIndexOf(el);
     });
     if (isThereRepeatingChar.length > 0) return false;
-    const alphabetIndex = alphabet.split("");
 
-    const alphabetSub = [
+    const alphabetForSub = [
       "a",
       "b",
       "c",
@@ -46,23 +47,25 @@ const substitutionModule = (function () {
     ];
     let userInput = input.toLowerCase();
     userInput = userInput.split("");
-
+    //check if encode is true
     if (encode === true) {
+      //put all of the indecies into an array
       const subsitutedIndex = userInput.map((el) => {
-        return el != " " ? alphabetSub.indexOf(el) : el;
+        return el != " " ? alphabetForSub.indexOf(el) : el;
       });
-
+      //make an array by matching the indecies with the normal alphabet
       const subsitution = subsitutedIndex.map((el2) => {
-        return el2 === " " ? " " : (el2 = alphabetIndex[el2]);
+        return el2 === " " ? " " : (el2 = alphabet[el2]);
       });
       return subsitution.join("");
     } else {
+      //put all of the indecies into an array
       const subsitutedIndex = userInput.map((el) => {
-        return el != " " ? alphabetIndex.indexOf(el) : el;
+        return el != " " ? alphabet.indexOf(el) : el;
       });
-
+      //make an array by matching the indecies with the normal alphabet
       const subsitution = subsitutedIndex.map((el2) => {
-        return el2 === " " ? " " : (el2 = alphabetSub[el2]);
+        return el2 === " " ? " " : (el2 = alphabetForSub[el2]);
       });
       return subsitution.join("");
     }

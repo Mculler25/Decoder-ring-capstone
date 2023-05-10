@@ -19,6 +19,13 @@ describe("polybius() submission tests written by Michael",()=>{
            expect(actual).to.equal(expected)
     
         });
+        it("should return false if there us no input given when decoding",()=>{
+            const expected = false;
+            const actual = polybius(false)
+    
+           expect(actual).to.equal(expected)
+    
+        });
 
     });
     describe("encoding a message written by Michael", ()=>{

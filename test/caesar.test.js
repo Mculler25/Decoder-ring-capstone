@@ -32,6 +32,13 @@ describe("caesar() submission tests written by Michael",()=>{
             expect(actual).to.equal(expected)
     
         })
+        it("should return false if when decoding you only put in an input",()=>{
+            const expected = false;
+            const actual = caesar("d phvvdjh.",false)
+    
+            expect(actual).to.equal(expected)
+    
+        })
 
     });
     describe("encoding a message written by Michael", ()=>{
