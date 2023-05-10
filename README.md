@@ -1,22 +1,3 @@
-## Installation Instructions
-
-First, verify that you have Node.js installed on your machine. Run the following two commands, which should successfully return version numbers.
-
-```
-node -v
-npm -v
-```
-
-If those commands don't return version numbers, reference [npm's documetation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on how to install Node.js on your machine.
-
-1. Fork this repository by clicking the Fork button at the top right of the page.
-2. Clone this repository.
-3. `cd` into the newly created directory.
-4. Run `npm install`.
-5. Run `npm start`.
-
-Running `npm start` will spin up a live server.
-
 ## Caesar Function
 
 The Caesar shift is a type of substitution cipher originally used by Julius Caesar to protect messages of military significance. It relies on taking the alphabet and "shifting" letters to the right or left, based on the typical alphabetic order.
